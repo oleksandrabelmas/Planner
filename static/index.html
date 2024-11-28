@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/flowbite@1.6.5/dist/flowbite.min.js"></script>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div class="relative flex h-16 items-center justify-between">
+            <!-- Mobile menu button-->
+            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+              <button
+                type="button"
+                class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+                onclick="toggleMobileMenu()"
+                
+              >
+                <span class="sr-only">Open main menu</span>
+                <!-- Icons -->
+                <svg id="menu-icon-open" class="block w-6 h-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <svg id="menu-icon-close" class="hidden w-6 h-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <!-- Main Navigation -->
+            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+              <div class="flex shrink-0 items-center">
+                <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
+              </div>
+              <div class="hidden sm:ml-6 sm:block">
+                <div class="flex space-x-4">
+                  <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Today</a>
+                  <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Weak</a>
+                </div>
+              </div>
+            </div>
+            <!-- Profile Dropdown -->
+            <div class="relative ml-3">
+              <button
+                type="button"
+                class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                id="user-menu-button"
+                aria-expanded="false"
+                aria-haspopup="true"
+                onclick="toggleDropdown()"
+              >
+                <span class="sr-only">Open user menu</span>
+                <img class="w-8 h-8 rounded-full" src="images/anonim.png" alt="User Avatar" />
+              </button>
+              <div id="user-menu" class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none transform transition-transform scale-95 opacity-0">
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700">Your Profile</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700">Settings</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700">Sign out</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden sm:hidden transform transition-transform scale-95 opacity-0">
+          <div class="space-y-1 px-2 pb-3 pt-2">
+            <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Dashboard</a>
+            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Team</a>
+            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
+            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
+          </div>
+        </div>
+      </nav>
+
+      
+      
+
+    <!-- Main Content -->
+    <main class="container mx-auto mt-6 px-4">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Your Tasks</h2>
+        <ul class="space-y-4">
+  <!-- Task Item -->
+            <li class="bg-white p-4 rounded-lg shadow flex justify-between items-center">
+                <div>
+                <p class="text-gray-800 font-medium">Complete Flask project</p>
+                <p class="text-gray-500 text-sm">
+                    Status: <span id="status-1" class="font-semibold text-yellow-500">In Progress</span>
+                </p>
+                </div>
+                <div class="flex space-x-2">
+                <button
+                    onclick="changeStatus(1, 'In Progress', 'text-yellow-500')"
+                    class="px-3 py-2 text-sm font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-300"
+                >
+                    In Progress
+                </button>
+                <button
+                    onclick="changeStatus(1, 'Completed', 'text-green-500')"
+                    class="px-3 py-2 text-sm font-medium text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-2 focus:ring-green-300"
+                >
+                    Completed
+                </button>
+                </div>
+            </li>
+
+            <li class="bg-white p-4 rounded-lg shadow flex justify-between items-center">
+                <div>
+                <p class="text-gray-800 font-medium">Complete Flask project</p>
+                <p class="text-gray-500 text-sm">
+                    Status: <span id="status-2" class="font-semibold text-yellow-500">In Progress</span>
+                </p>
+                </div>
+                <div class="flex space-x-2">
+                <button
+                    onclick="changeStatus(2, 'In Progress', 'text-yellow-500')"
+                    class="px-3 py-2 text-sm font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-300"
+                >
+                    In Progress
+                </button>
+                <button
+                    onclick="changeStatus(2, 'Completed', 'text-green-500')"
+                    class="px-3 py-2 text-sm font-medium text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-2 focus:ring-green-300"
+                >
+                    Completed
+                </button>
+                </div>
+            </li>
+
+            <li class="bg-white p-4 rounded-lg shadow flex justify-between items-center">
+                <div>
+                <p class="text-gray-800 font-medium">Complete Flask project</p>
+                <p class="text-gray-500 text-sm">
+                    Status: <span id="status-3" class="font-semibold text-yellow-500">In Progress</span>
+                </p>
+                </div>
+                <div class="flex space-x-2">
+                <button
+                    onclick="changeStatus(3, 'In Progress', 'text-yellow-500')"
+                    class="px-3 py-2 text-sm font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-300"
+                >
+                    In Progress
+                </button>
+                <button
+                    onclick="changeStatus(3, 'Completed', 'text-green-500')"
+                    class="px-3 py-2 text-sm font-medium text-white bg-green-500 rounded-lg hover:bg-green-600 focus:ring-2 focus:ring-green-300"
+                >
+                    Completed
+                </button>
+                </div>
+            </li>
+
+
+  <!-- Repeat the structure for additional tasks -->
+        </ul>
+        </main>
+
+    <script src="main.js"></script>
+</body>
+</html>
